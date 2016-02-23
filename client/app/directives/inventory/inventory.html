@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Inventory</div>
+  <div class="panel-body">
+    <div class="row" ng-repeat="item in inventory track by item.id">
+      <hr ng-if="!$first"/>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="{{item.image}}" alt="{{item.name}}">
+
+            <div class="caption">
+              <strong> {{item.name}} </strong>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-muted">
+          <p> Quantity</p>
+          <p> {{item.cant}} </p>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-primary" ng-click="open('sm',item)"><i class="fa fa-bullhorn"></i></button>
+          <strong class="text-info"> Auction </strong>
+        </div>
+
+    </div>
+
+  </div>
+</div>
+</div>

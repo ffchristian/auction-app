@@ -1,0 +1,66 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Auction</div>
+  <div class="panel-body" style="color: black">
+    <p class="text-primary" ng-if="!auction"> <strong> There is no auction yet!</strong> </p>
+
+
+
+    <div ng-show="auction && !flagFinished">
+      <p class="text-left">Seller: {{auction.seller}} <span class="pull-right" ng-bind="counter"> </span> </p>
+      <div class="row" >
+        <div class="col-md-6">
+          <div class="thumbnail">
+            <img src="{{auction.image}}" alt="{{auction.itemName}}">
+
+            <div class="caption">
+              <strong> {{auction.itemName}} </strong>
+              <p> Quantity</p>
+              <p> {{auction.cant}} </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-muted">
+          <p ng-if="!auction.winBid">
+            Min bid: {{auction.minBid}}
+          </p>
+          <p ng-if="auction.winBid">
+            Win bid: {{auction.winBid}}
+          </p>
+          <p>
+            <input ng-model="bid" ng-disabled="auction.seller==user.username" style="width: 80px" type="number" min="{{auction.minBid}}"/>
+          </p>
+
+
+          <button ng-click="bet()" ng-disabled="auction.seller==user.username" class="btn btn-primary btn-large"> <i class="fa fa-money"></i> Place Bid </button>
+
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="auction && auction.idBettor && flagFinished">
+      <p class="text-left">Winner: {{auction.usernameBettor}}
+        <span class="pull-right" ng-bind="counter"> </span>
+      </p>
+      <div class="row" >
+        <div class="col-md-6">
+          <div class="thumbnail">
+            <img src="{{auction.image}}" alt="{{auction.item}}">
+
+            <div class="caption">
+              <strong> {{auction.item}} </strong>
+              <p> Quantity</p>
+              <p> {{auction.cant}} </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-muted">
+          <p>
+            Win bid: {{auction.winBid}}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

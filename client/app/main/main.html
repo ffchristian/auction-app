@@ -1,0 +1,62 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div ng-if="!isLoggedIn" class="container">
+    <h1>Welcome!</h1>
+    <br/>
+    <br/>
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" ng-model="data.userName" class="form-control" id="exampleInputEmail3" placeholder="Username">
+      </div>
+      <button type="submit" ng-click="sign()" class="btn btn-default">Sign in</button>
+    </form>
+    <br/>
+    <br/>
+  </div>
+  <div ng-if="isLoggedIn" class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <user-data></user-data>
+      </div>
+      <div class="col-lg-4">
+       <inventory></inventory>
+      </div>
+      <div class="col-lg-4">
+        <auction></auction>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<footer class="footer">
+  <div class="container">
+      <p>test auction app |
+        <a href="https://www.linkedin.com/profile/view?id=AAIAABfp8zYBxMY5zIN-QIlivEN-ECVAsaE1DgM&trk=nav_responsive_tab_profile">linkedin</a></p>
+  </div>
+</footer>
+
+
+<script type="text/ng-template" id="myModalContent.html">
+  <div class="modal-header">
+    <h3 class="modal-title">Lets start an auction</h3>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="minBid">Min Bid</label>
+        <input type="number" class="form-control" ng-model="minBid" min="1" id="minBid" placeholder="Min Bid">
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" class="form-control" ng-model="cant" min="1"id="quantity" placeholder="Quantity">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-disabled="activeAuction" ng-click="ok()">Start Auction</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</script>
+
